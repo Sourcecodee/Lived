@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { SiteShell } from "@/components/site-shell";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Lived — Verified human experiences and materials",
+  title: "Lived — Original human work",
   description:
-    "Discover first-hand human experiences and human-made materials, with evidence behind every Lived Verified mark.",
+    "Discover original art, music, ideas, and first-hand knowledge with the makers and provenance behind every work.",
 };
 
 export default function RootLayout({
@@ -14,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SiteShell>{children}</SiteShell>
+      </body>
     </html>
   );
 }

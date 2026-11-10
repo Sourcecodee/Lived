@@ -1,26 +1,26 @@
-export type DiscoveryKind = "Experience" | "Material";
+export type ResourceKind = "experience" | "thought" | "codebase";
 
-export type ContentCategory =
-  | "Art"
-  | "Photography"
-  | "Writing"
-  | "Handmade"
-  | "Everyday life";
-
-export interface Creator {
-  name: string;
-  handle: string;
-  avatar: string;
+export interface ApiPage<T> {
+  data: T[];
+  pagination: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+  };
 }
 
-export interface DiscoveryItem {
-  id: string;
+export interface ExternalMaterial {
+  id: number;
   title: string;
-  summary: string;
-  kind: DiscoveryKind;
-  category: ContentCategory;
-  image: string;
+  artistTitle: string | null;
+  dateDisplay: string | null;
+  mediumDisplay: string | null;
+  artworkTypeTitle: string | null;
+  imageId: string | null;
+  imageUrl: string | null;
   imageAlt: string;
-  creator: Creator;
-  ratio: "portrait" | "landscape" | "square";
+  isPublicDomain: boolean;
+  sourceUrl: string;
+  sourceName: "Art Institute of Chicago";
 }
