@@ -56,7 +56,7 @@ function ArtworkEntry({
                 : "Image not shown · rights vary"}
             </div>
           )}
-          <span className="absolute left-3 top-3 bg-[#f5f0e7]/95 px-2.5 py-1 text-[9px] tracking-[0.07em] text-[#494139] uppercase">
+          <span className="absolute left-3 top-3 bg-[#f5f0e7]/95 px-2.5 py-1 text-[12px] tracking-[0.06em] text-[#494139] uppercase">
             Art Institute collection
           </span>
         </div>
@@ -65,20 +65,20 @@ function ArtworkEntry({
             <h2 className="font-serif text-[18px] leading-snug tracking-[-0.025em] group-hover:text-[#783e42]">
               {material.title}
             </h2>
-            <p className="mt-1.5 text-[11px] text-[#756d63]">
+            <p className="mt-1.5 text-[14px] text-[#625b52]">
               {material.artistTitle || "Artist not recorded"}
               {material.dateDisplay && ` · ${material.dateDisplay}`}
             </p>
-            <p className="mt-1 line-clamp-2 text-[10px] leading-5 text-[#8a8176]">
+            <p className="mt-1 line-clamp-2 text-[13px] leading-6 text-[#756d63]">
               {material.mediumDisplay || material.artworkTypeTitle || "Collection artwork"}
             </p>
           </div>
-          <span className="mt-1 shrink-0 text-[9px] leading-4 text-[#756d63]">
+          <span className="mt-1 shrink-0 text-[12px] leading-5 text-[#756d63]">
             {material.isPublicDomain ? "Public domain" : "Rights vary"}
           </span>
         </div>
       </Link>
-      <p className="mt-2 text-[9px] leading-4 text-[#8a8176]">
+      <p className="mt-2 text-[12px] leading-5 text-[#756d63]">
         Collection record #{material.id} ·{" "}
         <a
           href={material.sourceUrl}
@@ -93,9 +93,9 @@ function ArtworkEntry({
   );
 }
 
-export function MaterialGallery() {
-  const [queryInput, setQueryInput] = useState("");
-  const [query, setQuery] = useState("");
+export function MaterialGallery({ initialQuery = "" }: { initialQuery?: string }) {
+  const [queryInput, setQueryInput] = useState(initialQuery);
+  const [query, setQuery] = useState(initialQuery);
   const [page, setPage] = useState(1);
   const [items, setItems] = useState<ExternalMaterial[]>([]);
   const [pagination, setPagination] = useState<MaterialsResponse["pagination"] | null>(
@@ -158,10 +158,10 @@ export function MaterialGallery() {
     <div>
       <div className="mb-8 flex flex-col gap-5 bg-[#eee7db] px-4 py-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-[9px] font-semibold tracking-[0.14em] text-[#783e42] uppercase">
+          <p className="text-[12px] font-semibold tracking-[0.12em] text-[#783e42] uppercase">
             Art Institute of Chicago · Open Access
           </p>
-          <p className="mt-1.5 max-w-[540px] text-[11px] leading-5 text-[#756d63]">
+          <p className="mt-1.5 max-w-[540px] text-[14px] leading-6 text-[#625b52]">
             Original works with museum attribution, rights information, and a
             direct link to each collection record.
           </p>
@@ -174,12 +174,12 @@ export function MaterialGallery() {
               onChange={(event) => setQueryInput(event.target.value)}
               placeholder="Search art, artist, or material"
               aria-label="Search Art Institute collection"
-              className="min-w-0 flex-1 bg-transparent text-[12px] outline-none placeholder:text-[#92887d]"
+              className="min-w-0 flex-1 bg-transparent text-[15px] outline-none placeholder:text-[#92887d]"
             />
           </label>
           <button
             type="submit"
-            className="ml-3 border border-[#783e42] px-4 text-[10px] font-medium text-[#783e42] transition-colors hover:bg-[#783e42] hover:text-white"
+            className="ml-3 border border-[#783e42] px-4 text-[13px] font-medium text-[#783e42] transition-colors hover:bg-[#783e42] hover:text-white"
           >
             Search
           </button>
@@ -189,7 +189,7 @@ export function MaterialGallery() {
       {loading ? (
         <div aria-live="polite" className="py-16 text-center">
           <p className="font-serif text-2xl text-[#29241f]">Opening the collection…</p>
-          <p className="mt-2 text-[11px] text-[#756d63]">
+          <p className="mt-2 text-[14px] text-[#625b52]">
             Loading current records from the Art Institute of Chicago API.
           </p>
         </div>
@@ -198,11 +198,11 @@ export function MaterialGallery() {
           <p className="font-serif text-xl text-[#783e42]">
             We couldn’t reach the collection.
           </p>
-          <p className="mt-2 text-[11px] leading-5 text-[#756d63]">{errorMessage}</p>
+          <p className="mt-2 text-[14px] leading-6 text-[#625b52]">{errorMessage}</p>
           <button
             type="button"
             onClick={retry}
-            className="mt-4 inline-flex items-center gap-2 border border-[#783e42] px-3 py-2 text-[10px] text-[#783e42] hover:bg-[#783e42] hover:text-white"
+            className="mt-4 inline-flex items-center gap-2 border border-[#783e42] px-4 py-2.5 text-[13px] text-[#783e42] hover:bg-[#783e42] hover:text-white"
           >
             <RotateCw size={13} /> Try again
           </button>
@@ -210,13 +210,13 @@ export function MaterialGallery() {
       ) : items.length === 0 ? (
         <div className="bg-[#eee7db] px-6 py-14 text-center">
           <p className="font-serif text-2xl text-[#29241f]">No works found.</p>
-          <p className="mt-2 text-[11px] text-[#756d63]">
+          <p className="mt-2 text-[14px] text-[#625b52]">
             Try a different artist, material, or title.
           </p>
         </div>
       ) : (
         <>
-          <div className="mb-5 flex items-center justify-between text-[10px] text-[#756d63]">
+          <div className="mb-5 flex items-center justify-between text-[13px] text-[#756d63]">
             <p>
               {pagination?.total.toLocaleString()} collection records
               {query && ` for “${query}”`}
@@ -245,7 +245,7 @@ export function MaterialGallery() {
                   type="button"
                   disabled={page <= 1}
                   onClick={() => setPage((value) => Math.max(1, value - 1))}
-                  className="border border-[#a99d8d] px-3 py-2 text-[10px] text-[#51493f] enabled:hover:border-[#783e42] enabled:hover:text-[#783e42] disabled:cursor-not-allowed disabled:opacity-40"
+                  className="border border-[#a99d8d] px-4 py-2.5 text-[13px] text-[#51493f] enabled:hover:border-[#783e42] enabled:hover:text-[#783e42] disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   Previous
                 </button>
@@ -253,7 +253,7 @@ export function MaterialGallery() {
                   type="button"
                   disabled={page >= pagination.totalPages}
                   onClick={() => setPage((value) => value + 1)}
-                  className="border border-[#a99d8d] px-3 py-2 text-[10px] text-[#51493f] enabled:hover:border-[#783e42] enabled:hover:text-[#783e42] disabled:cursor-not-allowed disabled:opacity-40"
+                  className="border border-[#a99d8d] px-4 py-2.5 text-[13px] text-[#51493f] enabled:hover:border-[#783e42] enabled:hover:text-[#783e42] disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   Next
                 </button>

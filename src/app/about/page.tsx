@@ -23,6 +23,12 @@ export default function AboutPage() {
             was created. We want discovery to feel generous and open, while
             keeping its sources close at hand.
           </p>
+          <p>
+            Lived is not a ban on creative tools. Creators can disclose how AI
+            was used; reviewers will consider the creator’s authorship,
+            decisions, and evidence rather than treating AI assistance alone
+            as a verdict.
+          </p>
           <h2 className="display-font pt-3 text-[25px] tracking-[-0.04em] text-[#29241f]">
             How Lived review will work
           </h2>

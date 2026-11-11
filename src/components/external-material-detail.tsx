@@ -121,12 +121,36 @@ export function ExternalMaterialDetail({ id }: { id: string }) {
           <p className="mt-4 font-serif text-[20px] text-[#62594e]">
             {material.artistTitle || "Artist not recorded"}
           </p>
-          <dl className="mt-7 grid gap-2 bg-[#eee7db] p-4">
+          {material.artistDisplay && (
+            <p className="mt-1 text-[10px] leading-5 text-[#82786c]">
+              {material.artistDisplay}
+            </p>
+          )}
+          {material.creatorProfileUrl && (
+            <Link
+              href={material.creatorProfileUrl}
+              className="mt-3 inline-block border-b border-[#a99d8d] pb-1 text-[10px] text-[#783e42] hover:border-[#783e42]"
+            >
+              Explore more by this artist
+            </Link>
+          )}
+          {material.description && (
+            <div className="mt-5 max-w-[500px]">
+              <p className="mb-1 text-[8px] font-semibold tracking-[0.12em] text-[#877c70] uppercase">
+                Description from the museum record
+              </p>
+              <p className="font-serif text-[14px] leading-6 text-[#51493f]">
+                {material.description}
+              </p>
+            </div>
+          )}
+          <dl className="mt-6 grid gap-2 bg-[#eee7db] p-4">
             {[
               ["Date", material.dateDisplay],
               ["Medium", material.mediumDisplay],
               ["Type", material.artworkTypeTitle],
-              ["Rights", material.isPublicDomain ? "Public domain" : "Rights vary; consult source"],
+              ["Collection", material.creditLine],
+              ["Rights", material.rightsStatement],
             ]
               .filter((entry): entry is [string, string] => Boolean(entry[1]))
               .map(([label, value]) => (
@@ -136,6 +160,16 @@ export function ExternalMaterialDetail({ id }: { id: string }) {
                 </div>
               ))}
           </dl>
+          {material.provenanceText && (
+            <details className="mt-5">
+              <summary className="cursor-pointer text-[10px] text-[#783e42] underline decoration-[#b4a99b] underline-offset-4">
+                Read the museum’s provenance record
+              </summary>
+              <p className="mt-3 text-[10px] leading-5 text-[#756d63]">
+                {material.provenanceText}
+              </p>
+            </details>
+          )}
           <a
             href={material.sourceUrl}
             target="_blank"
@@ -145,9 +179,9 @@ export function ExternalMaterialDetail({ id }: { id: string }) {
             View original museum record <ExternalLink size={13} />
           </a>
           <p className="mt-7 max-w-[420px] text-[10px] leading-5 text-[#82786c]">
-            Collection details and rights information are supplied by the
-            Art Institute of Chicago. Visit the original record for its full
-            history and the latest rights details.
+            Attribution: {material.attributionText}. Collection details and
+            rights information come from the Art Institute of Chicago. Visit
+            the original record for its full history and current rights.
           </p>
         </div>
       </article>

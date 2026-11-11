@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { BrandMark } from "@/components/brand-mark";
 
 const navigation = [
-  { label: "Discover", href: "/materials" },
+  { label: "Explore", href: "/explore" },
   { label: "Conversations", href: "/conversations" },
   { label: "About", href: "/about" },
 ];
@@ -23,7 +23,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="shrink-0 py-2 text-[10px] text-[#625b52] transition-colors hover:text-[#783e42] sm:text-[12px]"
+                  className="shrink-0 py-2 text-[14px] text-[#625b52] transition-colors hover:text-[#783e42]"
                 >
                   {item.label}
                 </Link>
@@ -33,13 +33,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <div className="flex shrink-0 items-center gap-4">
             <Link
               href="/join"
-              className="hidden text-[10px] text-[#625b52] hover:text-[#783e42] sm:block"
+              className="hidden text-[13px] text-[#625b52] hover:text-[#783e42] sm:block"
             >
               Join Lived
             </Link>
             <Link
               href="/share"
-              className="bg-[#783e42] px-3 py-2.5 text-[9px] font-medium text-[#fffaf2] hover:bg-[#5e3034] sm:px-4 sm:text-[10px]"
+              className="bg-[#783e42] px-3 py-2.5 text-[13px] font-medium text-[#fffaf2] hover:bg-[#5e3034] sm:px-4"
             >
               Share your work
             </Link>
@@ -51,7 +51,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto flex max-w-[1320px] flex-col gap-6 px-5 py-8 sm:px-9 md:flex-row md:items-center md:justify-between">
           <div>
             <BrandMark />
-            <p className="mt-2 text-[11px] text-[#756d63]">
+            <p className="mt-2 text-[13px] text-[#756d63]">
               A home for work made by people.
             </p>
           </div>
@@ -60,18 +60,18 @@ export function SiteShell({ children }: { children: ReactNode }) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-[11px] text-[#756d63] hover:text-[#783e42]"
+                className="text-[13px] text-[#756d63] hover:text-[#783e42]"
               >
                 {item.label}
               </Link>
             ))}
-            <Link href="/share" className="text-[11px] text-[#756d63] hover:text-[#783e42]">
+            <Link href="/share" className="text-[13px] text-[#756d63] hover:text-[#783e42]">
               Share your work
             </Link>
-            <Link href="/join" className="text-[11px] text-[#756d63] hover:text-[#783e42]">
+            <Link href="/join" className="text-[13px] text-[#756d63] hover:text-[#783e42]">
               Join
             </Link>
-            <Link href="/developers/api" className="text-[11px] text-[#756d63] hover:text-[#783e42]">
+            <Link href="/developers/api" className="text-[13px] text-[#756d63] hover:text-[#783e42]">
               For developers
             </Link>
           </nav>

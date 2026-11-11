@@ -54,3 +54,23 @@ button {
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Keep legacy microtype utilities readable across every page. */
+[class~="text-[8px]"],
+[class~="text-[9px]"] {
+  font-size: 0.75rem;
+}
+
+[class~="text-[10px]"] {
+  font-size: 0.8125rem;
+}
+
+[class~="text-[11px]"],
+[class~="text-[12px]"] {
+  font-size: 0.875rem;
+}
+
+[class~="text-[13px]"],
+[class~="text-xs"] {
+  font-size: 0.9375rem;
+}
